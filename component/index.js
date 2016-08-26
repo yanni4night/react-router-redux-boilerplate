@@ -14,9 +14,14 @@
 import React from 'react'
 
 export default class Index extends React.Component {
+    setTitle() {
+        const cu = this.refs.title.value;
+        this.props.setTitle(cu);
+    }
     render() {
         return (<div>
             <h2>INDEX</h2>
+            <input type="text" ref="title" onInput={() => this.setTitle()} placeholder="Input title"/>
             <button type="button" onClick={this.props.toAbout}>to About</button>
             </div>)
     }

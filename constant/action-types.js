@@ -11,5 +11,4 @@
   */
 'use strict';
 
-export const TO_INDEX = 'TO_INDEX'
-export const TO_ABOUT = 'TO_ABOUT'
+export const SET_TITLE = 'SET_TITLE'

@@ -7,6 +7,7 @@ Best practice using [react](https://www.npmjs.com/package/react) with [redux](ht
 # check points
 
  - [x] navigate by action
+ - [x] store sync
  - [ ] immutable state
  - [ ] isomorphic
 

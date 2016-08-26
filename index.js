@@ -28,10 +28,11 @@ import Index from './component/index'
 import About from './component/about'
 import NoMatch from './component/404'
 
-const mapState2Props = state => ({current: state.current})
+const mapState2Props = state => ({title: state.title})
 
 const mapDispatch2Props = dispatch => bindActionCreators(actions, dispatch)
 
+const AppCom = connect(mapState2Props, mapDispatch2Props)(App)
 const IndexCom = connect(mapState2Props, mapDispatch2Props)(Index)
 const AboutCom = connect(mapState2Props, mapDispatch2Props)(About)
 
@@ -46,7 +47,7 @@ const history = syncHistoryWithStore(browserHistory, store)
 
 render(<Provider store={store}>
     <Router history={history}>
-        <Route path="/" component={App}>
+        <Route path="/" component={AppCom}>
             <IndexRoute component={IndexCom}></IndexRoute>
             <Route path="about" component={AboutCom}></Route>
             <Route path="*" component={NoMatch}></Route>
