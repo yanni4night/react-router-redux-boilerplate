@@ -12,11 +12,12 @@
 'use strict';
 
 import React from 'react'
+import {Map} from 'immutable'
 import {render} from 'react-dom'
 import {createStore, combineReducers, bindActionCreators, applyMiddleware} from 'redux'
 import {Provider, connect} from 'react-redux'
 import {Router, Route, IndexRoute, browserHistory} from 'react-router'
-import {syncHistoryWithStore, routerReducer, routerMiddleware} from 'react-router-redux'
+import {syncHistoryWithStore, LOCATION_CHANGE, routerMiddleware} from 'react-router-redux'
 import thunkMiddleware from 'redux-thunk'
 
 
@@ -28,7 +29,7 @@ import Index from './component/index'
 import About from './component/about'
 import NoMatch from './component/404'
 
-const mapState2Props = state => ({title: state.title})
+const mapState2Props = state => ({title: state.title.get('text')})
 
 const mapDispatch2Props = dispatch => bindActionCreators(actions, dispatch)
 
@@ -36,10 +37,21 @@ const AppCom = connect(mapState2Props, mapDispatch2Props)(App)
 const IndexCom = connect(mapState2Props, mapDispatch2Props)(Index)
 const AboutCom = connect(mapState2Props, mapDispatch2Props)(About)
 
+
+const initialState = new Map({'locationBeforeTransitions': null});
+
+const immutableRouterReducer = (state = initialState, {type, payload}) => {
+    if (type === LOCATION_CHANGE) {
+        return state.set('locationBeforeTransitions', payload)
+    }
+
+    return state
+}
+
 const store = createStore(
   combineReducers({
     ...reducers,
-    routing: routerReducer
+    routing: immutableRouterReducer //routerReducer
   }), applyMiddleware(thunkMiddleware, routerMiddleware(browserHistory))
 )
 

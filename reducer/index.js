@@ -12,10 +12,13 @@
 'use strict';
 
 import * as T from '../constant/action-types'
+import {Map} from 'immutable'
 
-export function title(state = 'hello', {type, payload}) {
+const initialState = new Map({'text': 'hello'});
+
+export function title(state = initialState, {type, payload}) {
     if (type === T.SET_TITLE) {
-        return payload
+        return state.set('text', payload)
     }
     return state;
 }
