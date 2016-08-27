@@ -33,4 +33,11 @@ module.exports = panto => {
             }
         }
     }).write();
+
+    panto.$('node_modules/**/normalize.css').tag('Normalize').copy();
+
+    panto.$('index.sass').tag('Sass').read().sass().write({
+        destname: 'bundle.css'
+    });
+
 };

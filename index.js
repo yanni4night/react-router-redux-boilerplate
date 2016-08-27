@@ -29,7 +29,7 @@ import Index from './component/index'
 import About from './component/about'
 import NoMatch from './component/404'
 
-const mapState2Props = state => ({title: state.title.get('text')})
+const mapState2Props = (state, ownProps) => ({title: state.title.get('text'), current: ownProps.location.pathname})
 
 const mapDispatch2Props = dispatch => bindActionCreators(actions, dispatch)
 
@@ -51,11 +51,13 @@ const immutableRouterReducer = (state = initialState, {type, payload}) => {
 const store = createStore(
   combineReducers({
     ...reducers,
-    routing: immutableRouterReducer //routerReducer
+    routing: immutableRouterReducer
   }), applyMiddleware(thunkMiddleware, routerMiddleware(browserHistory))
 )
 
-const history = syncHistoryWithStore(browserHistory, store)
+const history = syncHistoryWithStore(browserHistory, store, {
+    selectLocationState: state => ({locationBeforeTransitions: state.routing.get('locationBeforeTransitions')}) 
+})
 
 render(<Provider store={store}>
     <Router history={history}>

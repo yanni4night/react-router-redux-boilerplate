@@ -12,12 +12,9 @@
         }
     },
     "rules": {
-        "semi": 2,
         "no-unused-vars": ["error", { "varsIgnorePattern": "React" }]
     },
     "globals": {
-        "Promise": 1,
-        "panto": 1,
-        "Map": 1
+
     }
 }

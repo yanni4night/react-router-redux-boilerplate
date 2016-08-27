@@ -12,22 +12,13 @@
 'use strict';
 
 import React from 'react';
-import {Link} from 'react-router';
 
 export default class App extends React.Component {
     render() {
         return (
             <div className="container">
-                <header>
-                    <h1>{this.props.title}</h1>
-                    <nav>
-                        <ul>
-                            <li><Link to='/'>Index</Link></li>
-                            <li><Link to='/about'>About</Link></li>
-                        </ul>
-                    </nav>
-                </header>
-            <div class="content">{this.props.children}</div>
+                <div class="content">{this.props.children}</div>
+                <footer>&copy; copyright 2016, current: {this.props.current}</footer>
             </div>);
     }
 }
