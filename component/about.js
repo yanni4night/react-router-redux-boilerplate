@@ -19,15 +19,28 @@ export default class About extends React.Component {
         e.preventDefault()
         this.props.toIndex()
     }
+    setTitle(e) {
+        const title = e.target.value
+        this.props.setTitle(title)
+    }
     render() {
-        return (<div>
-            <h1>About this boilerplate</h1>
-            <article>
-<p>This is a boilerplate using react-router-redux, including navigation by <Link to="/">link</Link>, navigation by <a href="#" onClick={e=>this.toIndex(e)}>action</a>.
-</p>
-<p>
-The state is stored by immutable.js.
-</p>
-            </article></div>)
+        return (
+<div>
+    <h1>About this boilerplate</h1>
+    <article className="about">
+        <p>This is a boilerplate using react-router-redux, including:</p>
+        <ul>
+        <li>
+            navigation by <Link to="/">link</Link>
+        </li>
+        <li>
+            navigation by <a href="#" onClick={e=>this.toIndex(e)}>action</a>
+        </li>
+        <li>
+            set <i>immutable</i> state by <input type="text" onInput={e=>this.setTitle(e)} placeholder="action"/>
+        </li>
+        </ul>
+    </article>
+</div>)
     }
 }

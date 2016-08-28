@@ -20,18 +20,20 @@
     "babel-plugin-transform-object-rest-spread": "^6.8.0",
     "babel-preset-latest": "^6.14.0",
     "babel-preset-react": "^6.11.1",
+    "eslint": "^3.4.0",
+    "eslint-plugin-react": "^6.1.2",
     "load-panto-transformers": "^0.1.0",
     "panto": "0.0.32",
     "panto-transformer-babel": "^0.1.6",
     "panto-transformer-browserify": "^0.1.4",
-    "panto-transformer-copy": "^0.1.3",
+    "panto-transformer-copy": "^0.1.4",
     "panto-transformer-read": "^0.3.3",
     "panto-transformer-sass": "^0.1.0",
     "panto-transformer-write": "^0.3.3",
     "time-panto": "^0.1.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "eslint index.js action component constant reducer"
   },
   "repository": {
     "type": "git",

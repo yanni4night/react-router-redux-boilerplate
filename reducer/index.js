@@ -15,7 +15,7 @@ import * as T from '../constant/action-types'
 import {Map} from 'immutable'
 
 const initialState = new Map({'text': 'hello'});
-
+// Immutable state
 export function title(state = initialState, {type, payload}) {
     if (type === T.SET_TITLE) {
         return state.set('text', payload)

@@ -15,9 +15,9 @@ import {createAction} from 'redux-actions'
 import * as T from '../constant/action-types'
 import {push} from 'react-router-redux'
 
-// Exactly correct way to navigate
+// Navigation by action
 export const toIndex = () => push('/')
 export const toAbout = () => push('/about')
 
-//
+// Normal action
 export const setTitle = createAction(T.SET_TITLE)

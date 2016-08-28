@@ -18,7 +18,7 @@ export default class App extends React.Component {
         return (
             <div className="container">
                 <div class="content">{this.props.children}</div>
-                <footer>&copy; copyright 2016, current: {this.props.current}</footer>
-            </div>);
+                <footer>&copy; copyright 2016, current: {this.props.current}, title:{this.props.title}</footer>
+            </div>)
     }
 }
